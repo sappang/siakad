@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Faculty;
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Operator extends Model
 {
@@ -12,4 +16,19 @@ class Operator extends Model
         'department_id',
         'employee_number',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function faculty(): BelongsTo
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

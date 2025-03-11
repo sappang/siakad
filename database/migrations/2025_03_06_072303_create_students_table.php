@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->foreignId('classroom_id')->nullable()->constrained()->nullOnDelete();
             $table->string('student_number')->unique();
-            $table->unsignedInteger('year')->default(1);
+            $table->unsignedInteger('semester')->default(1);
             $table->year('batch');
             $table->foreignId('fee_group_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();

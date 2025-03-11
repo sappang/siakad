@@ -2,7 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Student;
+use App\Models\Schedule;
+use App\Models\AcademicYear;
+use App\Enums\StudyPlanStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class StudyPlan extends Model
 {
@@ -18,5 +24,20 @@ class StudyPlan extends Model
         return [
             'status' => StudyPlanStatus::class,
         ];
+    }
+
+    public function student(): BelongsTo
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function academicYear(): BelongsTo
+    {
+        return $this->belongsTo(AcademicYear::class);
+    }
+
+    public function schedules(): BelongsToMany
+    {
+        return $this->belongsToMany(Schedule::class, 'study_plan_schedule')->withTimestamps();
     }
 }
