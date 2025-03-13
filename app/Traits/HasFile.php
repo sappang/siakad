@@ -23,6 +23,8 @@ trait HasFile
         }else {
             $thumbnail = $model->$column;
         }
+
+        return $thumbnail;
     }
 
     public function delete_file(Model $model, string $column): void
