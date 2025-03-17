@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Fee;
 use Inertia\Middleware;
 use App\Enums\FeeStatus;
 use Tighten\Ziggy\Ziggy;
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserSingleResource;
 
