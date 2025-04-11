@@ -1,27 +1,11 @@
-import { useState } from "react";
-import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-} from "@/Components/ui/popover";
-import { Button } from "@/Components/ui/button";
-import { IconCaretDown } from "@tabler/icons-react";
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/Components/ui/command";
-import { cn } from "@/lib/utils";
+import { Button } from '@/Components/ui/button';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/Components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/Components/ui/popover';
+import { cn } from '@/lib/utils';
+import { IconCaretDown } from '@tabler/icons-react';
+import { useState } from 'react';
 
-export default function ComboBox({
-    items,
-    selectedItem,
-    onSelect,
-    placeholder = "Pilih item...",
-}) {
+export default function ComboBox({ items, selectedItem, onSelect, placeholder = 'Pilih item...' }) {
     const [open, setOpen] = useState(false);
     const handleSelect = (value) => {
         onSelect(value);
@@ -35,12 +19,11 @@ export default function ComboBox({
                     variant="outline"
                     role="combobox"
                     ariaExpanded={open}
-                    className="justify-between w-full"
+                    className="w-full justify-between"
                     size="xl"
                 >
-                    {items.find((item) => item.label == selectedItem)?.label ??
-                        placeholder}
-                    <IconCaretDown className="ml-2 opacity-50 size-4 shrink-0" />
+                    {items.find((item) => item.label == selectedItem)?.label ?? placeholder}
+                    <IconCaretDown className="ml-2 size-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
             <PopoverContent
@@ -53,18 +36,12 @@ export default function ComboBox({
                         <CommandEmpty>Item tidak ditemukan</CommandEmpty>
                         <CommandGroup>
                             {items.map((item, index) => {
-                                <CommandItem
-                                    key={index}
-                                    value={item.value}
-                                    onSelect={(value) => handleSelect(value)}
-                                >
+                                <CommandItem key={index} value={item.value} onSelect={(value) => handleSelect(value)}>
                                     {item.label}
                                     <IconCheck
                                         className={cn(
-                                            "ml-auto size-4",
-                                            selectedItem == item.label
-                                                ? "opacity-100"
-                                                : "opacity-0"
+                                            'ml-auto size-4',
+                                            selectedItem == item.label ? 'opacity-100' : 'opacity-0',
                                         )}
                                     />
                                 </CommandItem>;

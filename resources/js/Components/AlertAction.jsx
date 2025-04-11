@@ -1,20 +1,20 @@
 import {
     AlertDialog,
-    AlertDialogTrigger,
+    AlertDialogAction,
+    AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogHeader,
-    AlertDialogTitle,
     AlertDialogDescription,
     AlertDialogFooter,
-    AlertDialogCancel,
-    AlertDialogAction,
-} from "@/Components/ui/dialog";
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/Components/ui/dialog';
 
 export default function AlertAction({
     trigger,
     action,
-    title = "Apakah anda yakin?",
-    description = "Tindakan ini tidak dapat dikembalikan. Tindakan Ini Akan Menghapus Data Secara Permanen. dan menghapus data anda dari server kami.",
+    title = 'Apakah anda yakin?',
+    description = 'Tindakan ini tidak dapat dikembalikan. Tindakan Ini Akan Menghapus Data Secara Permanen. dan menghapus data anda dari server kami.',
 }) {
     return (
         <AlertDialog>
@@ -22,15 +22,11 @@ export default function AlertAction({
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>{title}</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        {description}
-                    </AlertDialogDescription>
+                    <AlertDialogDescription>{description}</AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={action}>
-                        Lanjutkan
-                    </AlertDialogAction>
+                    <AlertDialogAction onClick={action}>Lanjutkan</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
