@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Teacher;
 
-use App\Http\Controllers\Controller;
+use Inertia\Response;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardTeacherController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-        //
+    public function __invoke(): Response{
+        return inertia('Teachers/Dashboard', [
+            'page_settings' => [
+                'title' => 'Dashboard',
+                'subtitle' => 'Menampilkan semua Statistik di Platform ini.',
+            ],
+        ]);
     }
 }
