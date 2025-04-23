@@ -2,9 +2,18 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import NavigationMenu from '@/Components/NavigationMenu';
 import { Avatar, AvatarFallback } from '@/Components/ui/avatar';
 import { Button } from '@/Components/ui/button';
-import { DropdownMenu, DropdownMenuTrigger } from '@/Components/ui/dropdown-menu';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/Components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
 import { Disclosure } from '@headlessui/react';
-import { IconLayoutSidebar, IconX } from '@tabler/icons-react';
+import { Link } from '@inertiajs/react';
+import { IconChevronCompactDown, IconLayoutSidebar, IconLogout2, IconX } from '@tabler/icons-react';
 
 export default function HeaderStudentLayout({ url }) {
     return (
@@ -70,20 +79,145 @@ export default function HeaderStudentLayout({ url }) {
                                         {/* Dropdown Menu */}
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
-                                                <Button>
-                                                    <Avatar>
-                                                        <AvatarFallback>X</AvatarFallback>
+                                                <Button
+                                                    variant="blue"
+                                                    size="xl"
+                                                    className="data-[state=open]:bg-orange-500 data-[state=open]:text-white"
+                                                >
+                                                    <Avatar className="size-8 rounded-lg">
+                                                        <AvatarFallback className="rounded-lg text-blue-600">
+                                                            X
+                                                        </AvatarFallback>
                                                     </Avatar>
+                                                    <div className="grid flex-1 text-left text-sm leading-tight">
+                                                        <span className="truncate font-semibold">D.Rocks</span>
+                                                        <span className="truncate text-xs">rock@gmail.com</span>
+                                                    </div>
+                                                    <IconChevronCompactDown className="ml-auto size-4" />
                                                 </Button>
                                             </DropdownMenuTrigger>
+                                            <DropdownMenuContent
+                                                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                                                side="bottom"
+                                                align="end"
+                                                sideOffset={6}
+                                            >
+                                                <DropdownMenuLabel className="p-0 font-normal">
+                                                    <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                                                        <Avatar className="size-8 rounded-lg">
+                                                            <AvatarFallback className="rounded-lg text-blue-600">
+                                                                X
+                                                            </AvatarFallback>
+                                                        </Avatar>
+                                                        <div className="grid flex-1 text-left text-sm leading-tight">
+                                                            <span className="truncate font-semibold">D.Rocks</span>
+                                                            <span className="truncate text-xs">rock@gmail.com</span>
+                                                        </div>
+                                                    </div>
+                                                </DropdownMenuLabel>
+                                                <DropdownMenuSeparator />
+                                                <DropdownMenuItem asChild>
+                                                    <Link href="#">
+                                                        <IconLogout2 />
+                                                        Logout
+                                                    </Link>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
                                         </DropdownMenu>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <Disclosure.Panel className="lg:hidden">
+                            <div className="space-y-1 px-2 pb-3 pt-2">
+                                <Disclosure.Button
+                                    as="a"
+                                    href="#"
+                                    className={cn(
+                                        url.startsWith('/students/dashboard')
+                                            ? 'bg-blue-500 text-white'
+                                            : 'text-white hover:bg-blue-500',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Dashboard
+                                </Disclosure.Button>
+                                <Disclosure.Button
+                                    as="a"
+                                    href="#"
+                                    className={cn(
+                                        url.startsWith('/students/schedules')
+                                            ? 'bg-blue-500 text-white'
+                                            : 'text-white hover:bg-blue-500',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Jadwal
+                                </Disclosure.Button>
+                                <Disclosure.Button
+                                    as="a"
+                                    href="#"
+                                    className={cn(
+                                        url.startsWith('/students/study-plans')
+                                            ? 'bg-blue-500 text-white'
+                                            : 'text-white hover:bg-blue-500',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Kartu Rencana Studi
+                                </Disclosure.Button>
+                                <Disclosure.Button
+                                    as="a"
+                                    href="#"
+                                    className={cn(
+                                        url.startsWith('/students/study-results')
+                                            ? 'bg-blue-500 text-white'
+                                            : 'text-white hover:bg-blue-500',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Kartu Hasil Studi
+                                </Disclosure.Button>
+                                <Disclosure.Button
+                                    as="a"
+                                    href="#"
+                                    className={cn(
+                                        url.startsWith('/students/study-fees')
+                                            ? 'bg-blue-500 text-white'
+                                            : 'text-white hover:bg-blue-500',
+                                        'block rounded-md px-3 py-2 text-base font-medium',
+                                    )}
+                                >
+                                    Pembayaran
+                                </Disclosure.Button>
+                            </div>
+                            <div className="pb-3 pt-4">
+                                <div className="flex items-center px-5">
+                                    <div className="flex-shrink-0">
+                                        <Avatar>
+                                            <AvatarFallback>X</AvatarFallback>
+                                        </Avatar>
+                                    </div>
+                                    <div className="ml-3">
+                                        <div className="text-base font-medium text-white">D. Rocks</div>
+                                        <div className="text-sm font-medium text-white">rock@gmail.com</div>
+                                    </div>
+                                </div>
+                                <div className="mt-3 space-y-1 px-2">
+                                    <Disclosure.Button
+                                        as="a"
+                                        href="#"
+                                        className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
+                                    >
+                                        Logout
+                                    </Disclosure.Button>
+                                </div>
+                            </div>
+                        </Disclosure.Panel>
                     </>
                 )}
             </Disclosure>
+            <header className="py-6"></header>
         </>
     );
 }
