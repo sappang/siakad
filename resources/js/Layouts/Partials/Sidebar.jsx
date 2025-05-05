@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback } from '@/Components/ui/avatar';
 import { Link } from '@inertiajs/react';
 import {
     IconBook,
+    IconBooks,
     IconBuildingSkyscraper,
     IconCalendar,
     IconCalendarTime,
@@ -17,7 +18,7 @@ import {
     IconUsersGroup,
 } from '@tabler/icons-react';
 
-export default function Sidebar({ auth, url }) {
+export default function Sidebar({ auth = {}, url }) {
     return (
         <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col">
@@ -35,7 +36,7 @@ export default function Sidebar({ auth, url }) {
                         </div>
                     </Link>
                 </li>
-                {auth.roles.some((role) => ['Admin'].includes(role)) && (
+                {auth.user?.roles?.some((role) => ['Admin'].includes(role)) && (
                     <>
                         <NavLink
                             url="#"
@@ -101,6 +102,72 @@ export default function Sidebar({ auth, url }) {
                             active={url.startsWith('/admin/fee-groups')}
                             title="Golongan UKT"
                             icon={IconDroplet}
+                        />
+                    </>
+                )}
+
+                {auth.user?.roles?.some((role) => ['Teacher'].includes(role)) && (
+                    <>
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/dashboard')}
+                            title="Dashboard"
+                            icon={IconLayout2}
+                        />
+                        <div className="px-3 py-2 text-xs font-medium text-white">Akademik</div>
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/courses')}
+                            title="Mata Kuliah"
+                            icon={IconBook}
+                        />
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/teachers/schedules')}
+                            title="Jadwal"
+                            icon={IconCalendar}
+                        />
+                    </>
+                )}
+                {auth.user?.roles?.some((role) => ['Operator'].includes(role)) && (
+                    <>
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/dashboard')}
+                            title="Dashboard"
+                            icon={IconLayout2}
+                        />
+                        <div className="px-3 py-2 text-xs font-medium text-white">Pengguna</div>
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/students')}
+                            title="Mahasiswa"
+                            icon={IconUser}
+                        />
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/teachers')}
+                            title="Dosen"
+                            icon={IconUsersGroup}
+                        />
+                        <div className="px-3 py-2 text-xs font-medium text-white">Akademik</div>
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/classrooms')}
+                            title="Kelas"
+                            icon={IconDoor}
+                        />
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/courses')}
+                            title="Mata Kuliah"
+                            icon={IconBooks}
+                        />
+                        <NavLink
+                            url="#"
+                            active={url.startsWith('/operators/schedules')}
+                            title="Jadwal"
+                            icon={IconCalendar}
                         />
                     </>
                 )}

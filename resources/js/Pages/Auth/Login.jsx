@@ -53,7 +53,7 @@ export default function Login({ status, canResetPassword }) {
                                         name="email"
                                         value={data.email}
                                         autoComplete="username"
-                                        placeHolder="drock@gmail.com"
+                                        placeholder="drock@gmail.com"
                                         onChange={(e) => setData(e.target.name, e.target.value)}
                                     />
                                     {errors.email && <InputError message={errors.email} />}
