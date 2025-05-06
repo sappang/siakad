@@ -1,5 +1,5 @@
 import NavLink from '@/Components/NavLink';
-import { Avatar, AvatarFallback } from '@/Components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/Components/ui/avatar';
 import { Link } from '@inertiajs/react';
 import {
     IconBook,
@@ -28,11 +28,12 @@ export default function Sidebar({ auth = {}, url }) {
                         className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-blue-800"
                     >
                         <Avatar>
-                            <AvatarFallback>X</AvatarFallback>
+                            <AvatarImage src={auth.user?.avatar} />
+                            <AvatarFallback>{auth.user?.name?.substring(0, 1)}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col text-left">
-                            <span className="truncate font-bold">Monkey D Luffy</span>
-                            <span className="truncate">Admin</span>
+                            <span className="truncate font-bold">{auth.user?.name}</span>
+                            <span className="truncate">{auth.user?.role_name}</span>
                         </div>
                     </Link>
                 </li>
@@ -177,6 +178,7 @@ export default function Sidebar({ auth = {}, url }) {
                     url={route('logout')}
                     method="post"
                     as="button"
+                    className="w-full"
                     active={url.startsWith('/logout')}
                     title="Logout"
                     icon={IconLogout2}

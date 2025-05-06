@@ -38,14 +38,14 @@ class AuthenticatedSessionController extends Controller
         'Student'  => 'students.dashboard',
         'Teacher'  => 'teachers.dashboard',
         'Operator' => 'operators.dashboard',
-    ];
+        ];
 
         foreach ($roleToRoute as $role => $routeName) {
         if (auth()->user()->hasRole($role)) {
             $url = route($routeName, [], false);
             return redirect()->intended($url);
         }
-    }
+        }
     }
 
     /**

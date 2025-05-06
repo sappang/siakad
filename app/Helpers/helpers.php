@@ -1,5 +1,7 @@
 <?php 
 
+use App\Models\AcademicYear;
+
     if (!function_exists('flashMessage')) {
         function flashMesage($message, $type = 'success'): void
         {

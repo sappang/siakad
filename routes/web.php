@@ -5,11 +5,33 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::redirect('/','login');
+Route::get('/', function () {
+    if (auth()->check()) {
+        return to_route('dashboard');
+    }
+    else {
+        return to_route('login');
+    }
+});
 
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $roleToRoute = [
+        'Admin'    => 'admin.dashboard',
+        'Student'  => 'students.dashboard',
+        'Teacher'  => 'teachers.dashboard',
+        'Operator' => 'operators.dashboard',
+        ];
+
+        foreach ($roleToRoute as $role => $routeName) {
+        if (auth()->user()->hasRole($role)) {
+            $url = route($routeName, [], false);
+            return redirect()->intended($url);
+        }
+        else {
+            abort(404);
+        }
+        }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
