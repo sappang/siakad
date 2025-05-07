@@ -1,6 +1,6 @@
 import CardStat from '@/Components/CardStat';
 import StudentLayout from '@/Layouts/StudentLayout';
-import { IconCheck, IconX } from '@tabler/icons-react';
+import { IconCheck, IconCreditCard, IconX } from '@tabler/icons-react';
 
 export default function Dashboard(props) {
     return (
@@ -18,31 +18,31 @@ export default function Dashboard(props) {
                     data={{
                         title: 'Kartu Rencana Studi Diterima',
                         icon: IconCheck,
-                        background: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-500',
+                        background: 'text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-500',
                         iconClassname: 'text-white',
                     }}
                 >
-                    <div className="text-2xl font-bold">{props.count.study_plan_approved}</div>
+                    <div className="text-2xl font-bold">{props.count.study_plans_approved}</div>
                 </CardStat>
                 <CardStat
                     data={{
                         title: 'Kartu Rencana Studi Ditolak',
                         icon: IconX,
-                        background: 'text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-500',
+                        background: 'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-500',
                         iconClassname: 'text-white',
                     }}
                 >
-                    <div className="text-2xl font-bold">{props.count.study_plan_reject}</div>
+                    <div className="text-2xl font-bold">{props.count.study_plans_reject}</div>
                 </CardStat>
                 <CardStat
                     data={{
-                        title: 'KaXIconXrtu Rencana Studi Ditolak',
-                        icon: IconX,
-                        background: 'text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-500',
+                        title: 'Total Pembayaran',
+                        icon: IconCreditCard,
+                        background: 'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-500',
                         iconClassname: 'text-white',
                     }}
                 >
-                    <div className="text-2xl font-bold">{props.count.study_plan_reject}</div>
+                    <div className="text-2xl font-bold">{props.count.total_payments}</div>
                 </CardStat>
             </div>
         </div>
