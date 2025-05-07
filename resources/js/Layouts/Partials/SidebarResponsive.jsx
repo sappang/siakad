@@ -16,7 +16,7 @@ import {
     IconUsersGroup,
 } from '@tabler/icons-react';
 
-export default function SidebarResponsive({ auth, url }) {
+export default function SidebarResponsive({ auth = {}, url }) {
     return (
         <nav className="mt-4 flex flex-1 flex-col">
             <ul role="List" className="flex flex-1 flex-col">
@@ -30,7 +30,7 @@ export default function SidebarResponsive({ auth, url }) {
                         />
                         <div className="px-3 py-2 text-xs font-medium text-white">Master</div>
                         <NavLink
-                            url="#"
+                            url={route('admin.faculties.index')}
                             active={url.startsWith('/admin/faculties')}
                             title="Fakultas"
                             icon={IconBuildingSkyscraper}
