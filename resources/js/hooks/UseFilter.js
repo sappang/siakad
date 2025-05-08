@@ -1,3 +1,4 @@
+import { router } from '@inertiajs/react';
 import pkg from 'lodash';
 import { useCallback, useEffect } from 'react';
 
@@ -12,7 +13,7 @@ export default function UseFilter({ route, values, only, wait = 300 }) {
             });
         }, wait),
         [],
-    )
+    );
     useEffect(() => reload(values), [values, reload]);
     return { values };
 }

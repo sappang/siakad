@@ -8,7 +8,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from '@/Components/ui/dialog';
+} from '@/Components/ui/alert-dialog';
 
 export default function AlertAction({
     trigger,

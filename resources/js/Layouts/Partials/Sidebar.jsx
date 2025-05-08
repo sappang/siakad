@@ -40,7 +40,7 @@ export default function Sidebar({ auth, url }) {
                 {auth.user?.roles?.some((role) => ['Admin'].includes(role)) && (
                     <>
                         <NavLink
-                            url="#"
+                            url={route('admin.dashboard')}
                             active={url.startsWith('/admin/dashboard')}
                             title="Dashboard"
                             icon={IconLayout2}
