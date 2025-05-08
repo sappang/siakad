@@ -33,4 +33,15 @@ class FacultyController extends Controller
             ]
         ]);
     }
+    
+    Public function create(): Response {
+        return inertia('Admin/Faculties/Create', [
+            'page_settings' => [
+                'title' => 'Fakultas',
+                'subtitle' => 'Buat Fakultas baru disini. Klik simpan setelah selesai.',
+                'method' => 'POST',
+                'action' => route('admin.faculties.store'),
+            ],
+        ]);
+    }
 }
