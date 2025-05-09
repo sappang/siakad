@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table';
 import UseFilter from '@/hooks/UseFilter';
 import AppLayout from '@/Layouts/AppLayout';
-import { formatDateIndo } from '@/lib/utils';
+import { deleteAction, formatDateIndo } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
 import {
     IconArrowsDownUp,
@@ -177,7 +177,9 @@ export default function Index(props) {
                                                             <IconTrash className="size-4" />
                                                         </Button>
                                                     }
-                                                    action={() => console.log('delete')}
+                                                    action={() =>
+                                                        deleteAction(route('admin.faculties.destroy', [faculty]))
+                                                    }
                                                 />
                                             </div>
                                         </TableCell>

@@ -11,10 +11,10 @@ import { IconArrowLeft, IconBuildingSkyscraper, IconCheck } from '@tabler/icons-
 import { useRef } from 'react';
 import { toast } from 'sonner';
 
-export default function Create(props) {
+export default function Edit(props) {
     const fileInputLogo = useRef(null);
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        name: props.faculty.name ?? '',
         logo: null,
         _method: props.page_settings.method,
     });
@@ -91,4 +91,4 @@ export default function Create(props) {
         </div>
     );
 }
-Create.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;
+Edit.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;
